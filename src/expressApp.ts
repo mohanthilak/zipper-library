@@ -21,7 +21,9 @@ export default async (app: Application)=>{
         next()
     })
     const channel = await CreateChannel();
-    
+    app.get("/", (req, res)=>{
+        res.status(200).send("<h1>Welcome to Zipper-Libray</h1>")
+    })
     const booksRepository = new BooksRepository();
     const libraryRepository = new LibraryRepository();
     const rd = new RepositoryDependency(booksRepository, libraryRepository);
